@@ -70,7 +70,7 @@ class Mysql {
 }
 ```
 
-namespace下空一行，才能使用use，再空一行，才能声明class
+#### namespace下空一行，才能使用use，再空一行，才能声明class
 ```php
 <?php
 namespace Lib\Databases; // 下面必须空格一行
