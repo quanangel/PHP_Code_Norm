@@ -60,7 +60,7 @@ PHP代码规范
 *   一句声明中，必须只有一个导入(use)关键字；  
 *   在导入(use)声明代码块后面必须有一行空行；  
 代码如下：
-```
+```php
 <?php
     namespace Lib\Databases; // 下面必须空格一行
 
@@ -69,7 +69,7 @@ PHP代码规范
     }
 ```
 namespace下空一行，才能使用use，再空一行，才能声明class
-```
+```php
 <?php
 namespace Lib\Databases; // 下面必须空格一行
 
@@ -85,106 +85,121 @@ class Mysql {
 
 ### 2、类(class)，属性(property)和方法(method)
 ##### （1）、继承(extends) 和实现(implement) 必须和 class name 写在一行。
-    <?php
-    namespace Lib\Databaes;
+```php
+<?php
+namespace Lib\Databaes;
     
-    class Mysql extends ParentClass implements \PDO, \DB { // 写一行
-        ...
-    } 
-    
+class Mysql extends ParentClass implements \PDO, \DB { // 写一行
+    ...
+} 
+``` 
 ##### （2）、属性(property)必须声明其可见性，到底是 public 还是 protected 还是 private，不能省略，也不能使用var, var是php老版本中的什么方式，等用于public。
-    <?php
-    namespace Lib\Databaes;
+```php
+<?php
+namespace Lib\Databaes;
     
-    class Mysql extends ParentClass implements \PDO, \DB { // 写一行
-        public $foo = null;
-        private $name = 'yangyi';
-        protected $age = '17';
-    }
-    
+class Mysql extends ParentClass implements \PDO, \DB { // 写一行
+    public $foo = null;
+    private $name = 'yangyi';
+    protected $age = '17';
+}
+```  
 ##### （3）、方法(method)，必须 声明其可见性，到底是 public 还是 protected 还是 private，不能省略。如果有多个参数，第一个参数后紧接“,” ，再加一个空格：function_name ($par, $par2, $pa3), 如果参数有默认值，“=”左右各有一个空格分开。
-    <?php
-    namespace Lib\Databaes;
+```php
+<?php
+namespace Lib\Databaes;
     
-    class Mysql extends ParentClass implements \PDO, \DB { // 写一行
-        public getInfo($name, $age, $gender = 1) { // 参数之间有一个空格。默认参数的“=”左右各有一个空格，) 与 { 之间有一个空格
-            ...
-        }
+class Mysql extends ParentClass implements \PDO, \DB { // 写一行
+    public getInfo($name, $age, $gender = 1) { // 参数之间有一个空格。默认参数的“=”左右各有一个空格，) 与 { 之间有一个空格
+        ...
     }
-    
+}
+```
 ##### （4）、当用到抽象(abstract)和终结(final)来做类声明时，它们必须放在可见性声明 （public 还是protected还是private）的前面。而当用到静态(static)来做类声明时，则必须放在可见性声明的后面。
-    <?php
-    namespace Vendor\Package;
+```php
+<?php
+namespace Vendor\Package;
     
-    abstract class ClassName {
-        protected static $foo; // static放后面
-        abstract protected function zim(); // abstract放前面
-        final public static function bar() { // final放前面，static放最后。
-            // 方法主体部分
-        }
+abstract class ClassName {
+    protected static $foo; // static放后面
+    abstract protected function zim(); // abstract放前面
+    final public static function bar() { // final放前面，static放最后。
+        // 方法主体部分
     }
-    
+}
+```
 ### 3、控制结构
-###### 控制接口，就是 if else while switch等。这一类的写法规范也是经常容易出现问题的，也要规范一下。
+##### 控制接口，就是 if else while switch等。这一类的写法规范也是经常容易出现问题的，也要规范一下。
 ##### （1）、if，elseif，else写法，直接上规范代码吧：
-    <?php
-    if ($expr1) { // if 与 ( 之间有一个空格，) 与 { 之间有一个空格
-        ...
-    } elseif ($expr2) { // elesif 连着写，与 ( 之间有一个空格，) 与 { 之间有一个空格
-        ...
-    } else { // else 左右各一个空格
-        ...
-    }
+```php
+<?php
+if ($expr1) { // if 与 ( 之间有一个空格，) 与 { 之间有一个空格
+    ...
+} elseif ($expr2) { // elesif 连着写，与 ( 之间有一个空格，) 与 { 之间有一个空格
+    ...
+} else { // else 左右各一个空格
+    ...
+}
+```
 ##### （2）、switch，case 注意空格和换行，还是直接上规范代码：
-    <?php
-    switch ($expr) { // switch 与 ( 之间有一个空格，) 与 { 之间有一个空格
-        case 0:
-            echo 'First case, with a break'; // 对齐
-            break; // 换行写break，也对齐。
-        case 1:
-            echo 'Second case, which falls through';
-            // no break
-        case 2:
-        case 3:
-        case 4:
-            echo 'Third case, return instead of break';
-            return;
-        default:
-            echo 'Default case';
-            break;
-    }
+```php
+<?php
+switch ($expr) { // switch 与 ( 之间有一个空格，) 与 { 之间有一个空格
+    case 0:
+        echo 'First case, with a break'; // 对齐
+        break; // 换行写break，也对齐。
+    case 1:
+        echo 'Second case, which falls through';
+        // no break
+    case 2:
+    case 3:
+    case 4:
+        echo 'Third case, return instead of break';
+        return;
+    default:
+        echo 'Default case';
+        break;
+}
+```
 ###### （3）、while，do while 的写法也是类似，上代码：
-    <?php
-    while ($expr) { // while 与 ( 之间有一个空格， ) 与 { 之间有一个空格
-        ...
-    }
-    do { // do 与 { 之间有一个空格
-        ...
-    } while ($expr); // while 左右各有一个空格
+```php
+<?php
+while ($expr) { // while 与 ( 之间有一个空格， ) 与 { 之间有一个空格
+    ...
+}
+do { // do 与 { 之间有一个空格
+    ...
+} while ($expr); // while 左右各有一个空格
+```
 ##### （4）、for的写法
-    <?php
-    for ($i = 0; $i < 10; $i++) { // for 与 ( 之间有一个空格，二元操作符 "="、"<" 左右各有一个空格，) 与 { 之间有一个空格
-        ...
-    }
+```php
+<?php
+for ($i = 0; $i < 10; $i++) { // for 与 ( 之间有一个空格，二元操作符 "="、"<" 左右各有一个空格，) 与 { 之间有一个空格
+    ...
+}
+```
 ##### （5）、foreach的写法
-    <?php
-    foreach ($iterable as $key => $value) { // foreach 与 ( 之间有一个空格，"=>" 左右各有一个空格，) 与 { 之间有一个空格
-        ...
-    }
+```php
+<?php
+foreach ($iterable as $key => $value) { // foreach 与 ( 之间有一个空格，"=>" 左右各有一个空格，) 与 { 之间有一个空格
+    ...
+}
+```
 ##### （6）、try catch的写法
-    <?php
-    try { // try 右边有一个空格
-        ...
-    } catch (FirstExceptionType $e) { // catch 与 ( 之间有一个空格，) 与 { 之间有一个空格
-        ...
-    } catch (OtherExceptionType $e) { // catch 与 ( 之间有一个空格，) 与 { 之间有一个空格
-        ...
-    }
-    
+```php
+<?php
+try { // try 右边有一个空格
+    ...
+} catch (FirstExceptionType $e) { // catch 与 ( 之间有一个空格，) 与 { 之间有一个空格
+    ...
+} catch (OtherExceptionType $e) { // catch 与 ( 之间有一个空格，) 与 { 之间有一个空格
+    ...
+}
+```
     
 ### 4、注释
 *   （1）、类注释
-```
+```php
     /*
      * File Name:README.md
      * Auth:Qs
@@ -199,7 +214,7 @@ class Mysql {
 *   （3）、函数注释  
     参数名、属性名、标签的文本 上下要对齐；  
     在第一个标签前加一个空行；  
-```
+```php
     /*
      * Auth:Qs
      * Name:
