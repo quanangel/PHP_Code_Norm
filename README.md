@@ -59,15 +59,17 @@ PHP代码规范
 *   所有的导入(use)声明必须放在命名空间(namespace)声明的下面；  
 *   一句声明中，必须只有一个导入(use)关键字；  
 *   在导入(use)声明代码块后面必须有一行空行；  
+
 代码如下：
 ```php
 <?php
-    namespace Lib\Databases; // 下面必须空格一行
+namespace Lib\Databases; // 下面必须空格一行
 
-    class Mysql {
-        ...
-    }
+class Mysql {
+    ...
+}
 ```
+
 namespace下空一行，才能使用use，再空一行，才能声明class
 ```php
 <?php
